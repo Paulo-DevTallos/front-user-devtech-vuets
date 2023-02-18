@@ -17,6 +17,7 @@
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.1.0",
     "@types/node": "^18.11.12",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/tsconfig": "^0.1.3",
