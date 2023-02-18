@@ -151,6 +151,7 @@ export default defineComponent({
       > svg {
         font-size: 30px;
         margin-right: 30px;
+        cursor: pointer;
       }
 
       .cart {
@@ -172,6 +173,7 @@ export default defineComponent({
 
         svg {
           font-size: 27px;
+          cursor: pointer;
         }
       }
 
