@@ -1,5 +1,6 @@
 <template>
   <div class="container-layout">
+    <!--verificar a renderizacao do cabecalho somente se a rota for diferente das rotas de consultas-->
     <HeaderApp />
     <RouterView />
   </div>
