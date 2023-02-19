@@ -95,6 +95,7 @@ export default defineComponent({
         }
 
         svg {
+          display: inline;
           font-size: 27px;
           cursor: pointer;
         }

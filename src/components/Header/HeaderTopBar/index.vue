@@ -70,6 +70,11 @@ export default defineComponent({
           padding-right: 0;
           padding: 5px 20px;
           cursor: pointer;
+
+          svg {
+            display: inline;
+            margin-right: 7px;
+          }
         }
 
         a {
@@ -78,7 +83,7 @@ export default defineComponent({
           align-items: center;
           color: #333;
 
-          svg {
+          > svg {
             margin-right: 7px;
             font-size: 18px;
           }
