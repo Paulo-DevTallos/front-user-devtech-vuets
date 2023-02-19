@@ -1,8 +1,13 @@
 <template>
+  <HeaderApp />
   <main>
     <section class="home-banner">
       <aside class="menu-categories">
-        <header class="header-stylus spacing-list">Menu de categorias</header>
+        <header class="header-stylus spacing-list">
+          <!--será uma lista de categoria vinda do banco-->
+          <Icon icon="mdi:menu" />
+          Menu de categorias
+        </header>
         <ul>
           <li>Smartphones</li>
           <li>Smartwitches</li>
@@ -18,7 +23,7 @@
           <div class="price-banner">
             <span>FROM</span>
             <h3 class="price">R$ <span>8.099,99</span></h3>
-            <button>Comprar</button>
+            <MainButton class="btn primary" />
           </div>
         </div>
         <div class="image-product content-spacing">
@@ -35,11 +40,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { Icon } from "@iconify/vue";
+import MainButton from "@/components/Button/index.vue";
+import HeaderApp from "@/components/Header/index.vue";
 
 import imageIphone from "@/assets/img/iphone-14pro-max.png";
 
 export default defineComponent({
   name: "HomeView",
+  components: { Icon, HeaderApp, MainButton },
   data() {
     return {
       iphone: imageIphone,
@@ -58,20 +67,32 @@ main {
       height: 500px;
 
       .header-stylus {
+        display: flex;
+        align-items: center;
         background: #009acc;
         border-top-left-radius: 12px;
         color: #fff;
         font-size: 1.2rem;
+
+        svg {
+          font-size: 30px;
+          margin-right: 10px;
+        }
       }
 
       .spacing-list {
-        padding: 20px;
+        padding: 15px 20px;
       }
 
       ul {
         li {
           @extend .spacing-list;
           border-bottom: 1px solid #d1d1d1;
+          cursor: pointer;
+
+          &:hover {
+            background: #d1d1d1;
+          }
         }
       }
     }
@@ -110,17 +131,6 @@ main {
             > span {
               font-size: 60px;
             }
-          }
-
-          button {
-            width: 200px;
-            padding: 15px 0;
-            margin-top: 20px;
-            border-radius: 12px;
-            font-size: 20px;
-            background: #009acc;
-            border: none;
-            color: #fff;
           }
         }
       }
