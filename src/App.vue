@@ -1,8 +1,7 @@
 <template>
   <div class="container-layout">
-    <HeaderTopBar />
-    <!--verificar a renderizacao do cabecalho somente se a rota for diferente das rotas de consultas-->
-    <HeaderApp />
+    <HeaderTopBar @callFormRegister="formRegister" />
+    <AccessForm v-if="hiddenFormRegister" @closeForm="closeFormRegister" />
     <RouterView />
   </div>
 </template>
@@ -10,11 +9,25 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import HeaderTopBar from "@/components/Header/HeaderTopBar/index.vue";
-import HeaderApp from "@/components/Header/index.vue";
+import AccessForm from "@/components/Forms/AccessForm/index.vue";
 
 export default defineComponent({
   name: "App",
-  components: { HeaderTopBar, HeaderApp },
+  components: { HeaderTopBar, AccessForm },
+  data() {
+    return {
+      hiddenFormRegister: false,
+    };
+  },
+
+  methods: {
+    formRegister() {
+      this.hiddenFormRegister = true;
+    },
+    closeFormRegister() {
+      this.hiddenFormRegister = false;
+    },
+  },
 });
 </script>
 
