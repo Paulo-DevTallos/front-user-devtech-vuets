@@ -18,7 +18,7 @@
       </aside>
       <div class="into-banner">
         <div class="title-info content-spacing">
-          <h1>The new stardard</h1>
+          <h1>The new standard</h1>
           <p>The best of Iphone 14 pro MAX</p>
           <div class="price-banner">
             <span>FROM</span>
