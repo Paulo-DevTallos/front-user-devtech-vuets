@@ -19,7 +19,9 @@
         </li>
         <li>
           <Icon icon="carbon:user" />
-          <span @click="register">Registre-se</span>
+          <span @click="(_$event) => $emit('callFormRegister')"
+            >Registre-se</span
+          >
           &nbsp;ou&nbsp;
           <span @click="login">Faca seu login</span>
         </li>
@@ -35,14 +37,12 @@ import { Icon } from "@iconify/vue";
 export default defineComponent({
   name: "HeaderTopBar",
   components: { Icon },
+  emits: ["callFormRegister"],
   data() {
     return {};
   },
 
   methods: {
-    register() {
-      alert("chamará o form de cadastro");
-    },
     login() {
       alert("chamará o form de login");
     },
