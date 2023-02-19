@@ -1,5 +1,6 @@
 <template>
   <div class="container-layout">
+    <HeaderTopBar />
     <!--verificar a renderizacao do cabecalho somente se a rota for diferente das rotas de consultas-->
     <HeaderApp />
     <RouterView />
@@ -8,11 +9,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import HeaderTopBar from "@/components/Header/HeaderTopBar/index.vue";
 import HeaderApp from "@/components/Header/index.vue";
 
 export default defineComponent({
   name: "App",
-  components: { HeaderApp },
+  components: { HeaderTopBar, HeaderApp },
 });
 </script>
 
