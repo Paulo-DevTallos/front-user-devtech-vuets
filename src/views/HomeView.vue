@@ -23,7 +23,7 @@
           <div class="price-banner">
             <span>FROM</span>
             <h3 class="price">R$ <span>8.099,99</span></h3>
-            <MainButton class="btn primary" />
+            <MainButton class="btn primary" :btn_title="'Comprar'" />
           </div>
         </div>
         <div class="image-product content-spacing">
