@@ -1,8 +1,8 @@
 <template>
-  <form>
+  <form @submit.prevent="$emit('handleLogin')">
     <header>
-      <h2>Seja muito bem vindo(a) ao E-tech</h2>
-      <p>Preencha o formulário para comecarmos</p>
+      <h2>Bem vindo(a) de volta ao E-tech</h2>
+      <p>Realize seu login e boas compras!</p>
     </header>
     <div class="fields">
       <BaseInput placeholder="E-mail" :icon_name="'email'" />
@@ -11,10 +11,17 @@
         :hiddenRevellingPassword="true"
         :icon_name="'password'"
       />
-      <MainButton class="btn-rounded primary" />
+      <MainButton
+        type="submit"
+        class="btn-rounded primary"
+        :btn_title="'Login'"
+        @handleEvent="teste"
+      />
       <p>
         Ainda não tem uma conta?
-        <RouterLink to="/"> Registrar </RouterLink>
+        <span class="key-field" @click="(_$event) => $emit('changeForm')">
+          Registrar
+        </span>
       </p>
     </div>
   </form>
@@ -28,6 +35,12 @@ import BaseInput from "@/components/Inputs/BaseInput.vue";
 export default defineComponent({
   name: "Login",
   components: { MainButton, BaseInput },
+  emits: ["changeForm", "handleLogin"],
+  methods: {
+    teste() {
+      alert("login");
+    },
+  },
 });
 </script>
 
@@ -49,6 +62,14 @@ form {
 
   .fields {
     margin-top: 40px;
+
+    .key-field {
+      &:hover {
+        text-decoration: underline;
+        color: #009acc;
+        cursor: pointer;
+      }
+    }
   }
 }
 </style>
