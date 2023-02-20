@@ -1,7 +1,14 @@
 <template>
-  <div class="form-container">
+  <div class="form-container" v-if="hiddenAccessForm">
     <Icon icon="mdi:close" @click="(_$event) => $emit('closeForm')" />
-    <Login />
+    <Login
+      @changeForm="(_$event) => $emit('setToFormRegister')"
+      v-if="hiddenFormLogin"
+    />
+    <Register
+      @changeForm="(_$event) => $emit('setToFormLogin')"
+      v-if="hiddenFormRegister"
+    />
   </div>
 </template>
 
@@ -9,11 +16,28 @@
 import { defineComponent } from "vue";
 import { Icon } from "@iconify/vue";
 import Login from "@/components/Forms/Login/index.vue";
+import Register from "@/components/Forms/Register/index.vue";
 
 export default defineComponent({
   name: "AccessForm",
-  components: { Icon, Login },
-  emits: ["closeForm"],
+  components: { Icon, Login, Register },
+  emits: ["closeForm", "setToFormLogin", "setToFormRegister"],
+  props: {
+    hiddenAccessForm: {
+      type: Boolean,
+    },
+    hiddenFormLogin: {
+      type: Boolean,
+    },
+    hiddenFormRegister: {
+      type: Boolean,
+    },
+  },
+  data() {
+    return {};
+  },
+
+  methods: {},
 });
 </script>
 
