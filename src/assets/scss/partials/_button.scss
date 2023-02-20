@@ -1,0 +1,32 @@
+// btn type
+.btn {
+  width: 200px;
+  padding: 15px 0;
+  margin-top: 20px;
+  border-radius: 12px;
+  font-size: 20px;
+  border: 1px solid #d1d1d1;
+  cursor: pointer;
+}
+
+.btn-rounded {
+  width: 100%;
+  padding: 12px 0;
+  margin: 20px 0;
+  border-radius: 24px;
+  font-size: 20px;
+  border: 1px solid #d1d1d1;
+  cursor: pointer;
+}
+
+// color btn status
+.primary {
+  background-color: #009acc;
+  color: #fff;
+  border: none;
+
+  &:hover,
+  &:active {
+    background-color: #007096;
+  }
+}

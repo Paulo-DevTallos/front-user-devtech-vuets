@@ -1,85 +1,60 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="container-layout">
+    <HeaderTopBar @callFormLogin="formLogin" />
+    <AccessForm
+      @closeForm="closeAccessForm"
+      @setToFormLogin="setToLogin"
+      @setToFormRegister="setToRegister"
+      :hiddenAccessForm="hiddeBoxModal"
+      :hiddenFormLogin="login"
+      :hiddenFormRegister="register"
+    />
+    <RouterView />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script lang="ts">
+import { defineComponent } from "vue";
+import HeaderTopBar from "@/components/Header/HeaderTopBar/index.vue";
+import AccessForm from "@/components/Forms/AccessForm/index.vue";
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default defineComponent({
+  name: "App",
+  components: { HeaderTopBar, AccessForm },
+  data() {
+    return {
+      hiddeBoxModal: false,
+      register: false,
+      login: false,
+    };
+  },
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+  methods: {
+    formLogin() {
+      this.hiddeBoxModal = true;
+      this.login = true;
+    },
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+    closeAccessForm() {
+      this.hiddeBoxModal = false;
+    },
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+    setToRegister() {
+      this.login = false;
+      this.register = true;
+    },
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+    setToLogin() {
+      this.register = false;
+      this.login = true;
+    },
+  },
+});
+</script>
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+<style lang="scss">
+.container-layout {
+  max-width: 1350px;
+  margin: 0 auto;
 }
 </style>
