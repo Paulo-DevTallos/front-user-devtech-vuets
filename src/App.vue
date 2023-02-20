@@ -1,7 +1,14 @@
 <template>
   <div class="container-layout">
-    <HeaderTopBar @callFormRegister="formRegister" />
-    <AccessForm v-if="hiddenFormRegister" @closeForm="closeFormRegister" />
+    <HeaderTopBar @callFormLogin="formLogin" />
+    <AccessForm
+      @closeForm="closeAccessForm"
+      @setToFormLogin="setToLogin"
+      @setToFormRegister="setToRegister"
+      :hiddenAccessForm="hiddeBoxModal"
+      :hiddenFormLogin="login"
+      :hiddenFormRegister="register"
+    />
     <RouterView />
   </div>
 </template>
@@ -16,16 +23,30 @@ export default defineComponent({
   components: { HeaderTopBar, AccessForm },
   data() {
     return {
-      hiddenFormRegister: false,
+      hiddeBoxModal: false,
+      register: false,
+      login: false,
     };
   },
 
   methods: {
-    formRegister() {
-      this.hiddenFormRegister = true;
+    formLogin() {
+      this.hiddeBoxModal = true;
+      this.login = true;
     },
-    closeFormRegister() {
-      this.hiddenFormRegister = false;
+
+    closeAccessForm() {
+      this.hiddeBoxModal = false;
+    },
+
+    setToRegister() {
+      this.login = false;
+      this.register = true;
+    },
+
+    setToLogin() {
+      this.register = false;
+      this.login = true;
     },
   },
 });
